@@ -4,14 +4,16 @@ const lodash = require("lodash");
 const search = async (req, res, next) => {
     try {
         // time: [1-time1-time2]
-        const {type, lat,long, price, calo, time} = lodash.pick(req.query, ["type", "lat", "long", "price", "time", "calo"]);
+        const {type, lat,long, price, calo, time,  min_price, max_price} = lodash.pick(req.query, ["type", "lat", "long", "min_price", "time", "calo", "max_price"]);
         const response = await foodService.search({
             type,
             lat,
             long,
             price,
             calo,
-            time
+            time,
+            min_price,
+            max_price
         });
         if (response.status === 200) {
             return res.status(200).json(response.data);

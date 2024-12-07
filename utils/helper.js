@@ -1,4 +1,4 @@
-
+const mathjs = require("mathjs");
 
 const isOpened = (currTime, availableTimes) => {
     try {
@@ -19,8 +19,13 @@ const isOpened = (currTime, availableTimes) => {
         return false
     }
 }
-
+const function_f = (wanted_value, actual_value, weight) => {
+    const value = mathjs.exp(mathjs.multiply(mathjs.divide(mathjs.abs(mathjs.subtract(actual_value, wanted_value)), weight), -1));
+    console.log("Chi value is null", value)
+    return value
+} 
 
 module.exports = {
-    isOpened
+    isOpened,
+    function_f
 }
