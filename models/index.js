@@ -29,15 +29,15 @@ db.sequelize = sequelize
 db.sequelize.sync({ alter: false, force: false });
 
 
-db.Food = require('./food')(sequelize, DataTypes);
-db.Restaurants = require('./restaurant')(sequelize, DataTypes);
-db.Types = require('./type')(sequelize, DataTypes);
+const Food = require('./food.js')(sequelize, DataTypes);
+const Restaurants = require('./restaurant.js')(sequelize, DataTypes);
+const Types = require('./type.js')(sequelize, DataTypes);
 
 
-db.Restaurants.hasMany(db.Food, { foreignKey: 'restaurant_id' });
-db.Food.belongsTo(db.Restaurants, { foreignKey: 'restaurant_id' });
+Restaurants.hasMany(Food, { foreignKey: 'restaurant_id' });
+Food.belongsTo(Restaurants, { foreignKey: 'restaurant_id' , as: "restaurant"});
 
-db.Types.hasMany(db.Food, { foreignKey: 'type_id' });
-db.Food.belongsTo(db.Types, { foreignKey: 'type_id' });
+Types.hasMany(Food, { foreignKey: 'type_id' });
+Food.belongsTo(Types, { foreignKey: 'type_id', as: "type" });
 
 module.exports = db;

@@ -17,7 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const testRoute = require('./routes/test');
+const foodRoute = require('./routes/food.route.js')
+const router = require("./routes");
 app.use("/api/test", testRoute);
+app.use("/api", router);
 
 // app.options("*", cors());
 
