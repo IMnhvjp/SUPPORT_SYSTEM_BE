@@ -16,11 +16,9 @@ const helper = require("../utils/helper.js");
 
 const convert = (rawdata, wantedCalo) => {
     const processedData = rawdata.reduce((acc, curr) => {
-        const actual_calo = curr.calo;
-        // const value = -(Math.pow(actual_calo - wantedCalo) / 2)
+        const actual_calo = curr.original_calo;
         const value = helper.function_f(wantedCalo, actual_calo, 256);
-        const processedCalo = mathjs.exp(value);
-        curr.processed_calo = processedCalo;
+        curr.processed_calo = value;
         acc.push(curr);
         return acc;
     }, [])

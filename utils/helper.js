@@ -21,7 +21,6 @@ const isOpened = (currTime, availableTimes) => {
 }
 const function_f = (wanted_value, actual_value, weight) => {
     const value = mathjs.exp(mathjs.multiply(mathjs.divide(mathjs.abs(mathjs.subtract(actual_value, wanted_value)), weight), -1));
-    console.log("Chi value is null", value)
     return value
 } 
 
