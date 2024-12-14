@@ -42,7 +42,7 @@ const search = async ({type, time, lat,long, min_price, max_price,calo = 500}) =
         data = converter.caloConverter.convert(data, calo);
         data = converter.positionConverter.convert(data, lat, long);
         data = converter.priceConverter.convert(data, min_price, max_price, max_actual_price - min_actual_price);
-        data = converter.totalLikeConverter.convert(data);
+        // data = converter.totalLikeConverter.convert(data);
         result[1] = {
             worst_scenerio: null,
             best_scenerio: null,
