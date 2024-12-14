@@ -15,9 +15,15 @@ const mathjs = require("mathjs");
 // }
 const convert = (rawData) => {
     const processData = rawData.map(item => {
-        const value = item.total_like * mathjs.log(item.restaurant_total_review) * mathjs.log(item.restaurant_avg_rating);
-        item.processed_rating = value;
-        return item;
+        try {
+            const value = item.total_like * mathjs.log(item.restaurant_total_review) * mathjs.log(item.restaurant_avg_rating);
+            item.processed_rating = value;
+            return item;
+        }
+        catch (e) {
+            item.processed_rating = 0;
+            return item
+        }
     });
     return processData
 }
