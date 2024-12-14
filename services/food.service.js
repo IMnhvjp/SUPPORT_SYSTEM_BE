@@ -11,6 +11,7 @@ const search = async ({type, time, lat,long, min_price, max_price,calo = 500}) =
             const dataValues = item.dataValues;
             return {
                 name: dataValues.name,
+                image: dataValues.image,
                 description: dataValues.description,
                 original_price: dataValues.price,
                 original_calo: dataValues.calo,
