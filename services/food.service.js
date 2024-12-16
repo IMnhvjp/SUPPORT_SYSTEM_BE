@@ -31,6 +31,12 @@ const search = async ({type, time, lat,long, min_price, max_price,calo = 500}) =
                 c_asterisk: -1
             }
         });
+        if (data.length == 0) {
+            return {
+                status: 404,
+                message: "No Food Available"
+            }
+        }
         result[0] = {
             worst_scenerio: null,
             best_scenerio: null,
@@ -38,6 +44,8 @@ const search = async ({type, time, lat,long, min_price, max_price,calo = 500}) =
         }
 
         // convert data
+        console.log(data);
+        console.log(lodash.maxBy(data, "original_price"))
         const max_actual_price = lodash.maxBy(data, "original_price").original_price;
         const min_actual_price = lodash.minBy(data, "original_price").original_price;
         data = converter.caloConverter.convert(data, calo);

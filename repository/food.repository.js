@@ -25,6 +25,7 @@ const getAllFood = async ({type = null, time = null}) => {
         if (!time){
             return true;
         }
+        console.log(currFodd.dataValues.restaurant.times);
         return helper.isOpened(time, currFodd.dataValues.restaurant.times)
     });
 }

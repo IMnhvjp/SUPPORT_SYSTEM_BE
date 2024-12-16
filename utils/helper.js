@@ -1,8 +1,9 @@
 const mathjs = require("mathjs");
-
+const lodash = require("lodash")
+const moment = require("moment")
 const isOpened = (currTime, availableTimes) => {
     try {
-        const [day, time] =  currTime.split('-');
+        let [day, time] =  currTime.split('-');
         const processedAvailableTimes = availableTimes.reduce((acc, curr) => {
             const [day, openTime, closeTime] = curr.split('-');
             acc[day] =  {
@@ -12,6 +13,8 @@ const isOpened = (currTime, availableTimes) => {
             return acc;
         },{});
         const {openTime, closeTime} =  processedAvailableTimes[day];
+        // const formatted_time = lodash.padStart((time || 9).toString(), 2, '0');
+        time = moment(time, "h:mm").format("HH:MM");
         return (openTime <= time && time <= closeTime);
     }
     catch (e) {
