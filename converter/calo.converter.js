@@ -16,11 +16,20 @@ const helper = require("../utils/helper.js");
 
 const convert = (rawdata, wantedCalo) => {
     const processedData = rawdata.reduce((acc, curr) => {
-        const actual_calo = curr.original_calo;
-        const value = helper.function_f(wantedCalo, actual_calo, wantedCalo * wantedCalo);
-        curr.processed_calo = value;
-        acc.push(curr);
-        return acc;
+        try {
+            const actual_calo = curr.original_calo;
+            const value = helper.function_f(wantedCalo, actual_calo, wantedCalo * wantedCalo);
+            curr.processed_calo = value;
+            acc.push(curr);
+            return acc;
+        }
+        catch (e) {
+            const actual_calo = curr.original_calo;
+            const value = helper.function_f(300, actual_calo, 300 * 300);
+            curr.processed_calo = value;
+            acc.push(curr);
+            return acc;
+        }
     }, [])
     return processedData
 }
