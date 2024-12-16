@@ -23,7 +23,7 @@ const isOpened = (currTime, availableTimes) => {
     }
 }
 const function_f = (wanted_value, actual_value, weight) => {
-    const value = mathjs.exp(mathjs.multiply(mathjs.divide(mathjs.abs(mathjs.subtract(actual_value, wanted_value)), weight), -1));
+    const value = mathjs.exp(mathjs.multiply(mathjs.divide(mathjs.pow(mathjs.subtract(actual_value, wanted_value), 2), weight), -1));
     return value
 } 
 
