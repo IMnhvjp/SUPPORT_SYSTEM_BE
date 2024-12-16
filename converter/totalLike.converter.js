@@ -16,7 +16,7 @@ const mathjs = require("mathjs");
 const convert = (rawData) => {
     const processData = rawData.map(item => {
         try {
-            const value = item.total_like * mathjs.log(item.restaurant_total_review) * mathjs.log(item.restaurant_avg_rating);
+            const value = item.restaurant_avg_rating * mathjs.log(item.restaurant_total_review) * mathjs.log(item.total_like);
             item.processed_rating = value;
             return item;
         }
