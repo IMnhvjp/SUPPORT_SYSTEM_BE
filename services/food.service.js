@@ -53,7 +53,7 @@ const search = async ({type, time, lat,long, min_price, max_price,calo = 500}) =
         //TODO BUOC 1: Chuan hoa
         const max_distance = lodash.maxBy(data, "distance").distance;
         const {sum_square_rating, sum_square_calo, sum_square_price, sum_square_distance} = data.reduce((acc, curr) => {
-            curr.processed_price = max_actual_price - curr.processed_price;
+            // curr.processed_price = max_actual_price - curr.processed_price;
             curr.distance = max_distance - curr.distance;
             acc.sum_square_calo += mathjs.pow(curr.processed_calo, 2);
             acc.sum_square_rating += mathjs.pow(curr.processed_rating, 2);
